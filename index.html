@@ -23,9 +23,28 @@
 html{scroll-behavior:smooth}
 body{font-family:'Lato',sans-serif;color:#fff;overflow-x:hidden;background:#0a0410}
 
-/* ─── BACKGROUND ─── */
-/* L'immagine è solo nell'hero — sotto, sfondo scuro solido senza ripetizioni */
-.bg-fixed{display:none;}
+/* ─── BACKGROUND (metodo doc1: body bg-image + fixed + fallback iOS) ─── */
+body{
+  background-image:url('rapunzel.jpg');
+  background-size:cover;
+  background-position:center 10%;
+  background-attachment:fixed;
+  background-repeat:no-repeat;
+}
+@supports (-webkit-touch-callout: none){
+  body{background-attachment:scroll;background-position:center top;}
+}
+.bg-fixed{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.bg-fixed img{display:none;}
+.bg-fixed::after{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to bottom,
+    rgba(5,2,10,0.02) 0%,
+    rgba(5,2,10,0.10) 28%,
+    rgba(5,2,10,0.28) 55%,
+    rgba(5,2,10,0.55) 80%,
+    rgba(5,2,10,0.70) 100%);
+}
 .page{position:relative;z-index:1}
 
 /* ─── HERO ─── */
@@ -35,20 +54,6 @@ body{font-family:'Lato',sans-serif;color:#fff;overflow-x:hidden;background:#0a04
   display:flex;flex-direction:column;align-items:center;
   padding:4vh 1.5rem 2rem;
   overflow:hidden;
-  background-image:url('rapunzel.jpg');
-  background-size:cover;
-  background-position:center 10%;
-  background-repeat:no-repeat;
-}
-/* Gradient overlay solo sull'hero */
-.hero::before{
-  content:'';position:absolute;inset:0;z-index:0;
-  background:linear-gradient(to bottom,
-    rgba(5,2,10,0.02) 0%,
-    rgba(5,2,10,0.12) 30%,
-    rgba(5,2,10,0.32) 58%,
-    rgba(5,2,10,0.60) 82%,
-    rgba(5,2,10,0.80) 100%);
 }
 .hero-names{
   font-family:'Great Vibes',cursive;
@@ -88,16 +93,9 @@ body{font-family:'Lato',sans-serif;color:#fff;overflow-x:hidden;background:#0a04
 }
 .hero-spacer{flex:1}
 
-/* Floating lanterns background */
-.lanterns-bg{
-  position:absolute;inset:0;
-  pointer-events:none;
-  overflow:hidden;
-  z-index:1;
-}
+.lanterns-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1;}
 .fl-lantern{
-  position:absolute;
-  bottom:-50px;
+  position:absolute;bottom:-50px;
   animation:lanternRise var(--dur,8s) var(--delay,0s) ease-in-out infinite;
   will-change:transform,opacity;
   filter:drop-shadow(0 0 8px rgba(240,217,138,0.5));
@@ -111,27 +109,18 @@ body{font-family:'Lato',sans-serif;color:#fff;overflow-x:hidden;background:#0a04
   100%{transform:translateY(-108vh) rotate(4deg);opacity:0;}
 }
 
-/* Scroll hint lantern */
 .scroll-hint-wrap{
-  position:relative;z-index:2;
-  margin-bottom:1rem;
+  position:relative;z-index:2;margin-bottom:1rem;
   display:flex;flex-direction:column;align-items:center;gap:4px;
   animation:bobLantern 2.4s ease-in-out infinite;
 }
-.scroll-hint-wrap span{
-  font-family:'Cinzel',serif;
-  font-size:0.65rem;letter-spacing:0.15em;
-  color:rgba(240,217,138,0.55);
-  text-transform:uppercase;
-}
+.scroll-hint-wrap span{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.15em;color:rgba(240,217,138,0.55);text-transform:uppercase;}
 @keyframes bobLantern{0%,100%{transform:translateY(0)}50%{transform:translateY(9px)}}
 @keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 
-/* ─── SECTIONS ─── */
 .section{padding:2rem 1.2rem;max-width:660px;margin:0 auto}
 
-/* ─── GLASS BOXES ─── */
 .glass{
   background:
     radial-gradient(circle 6px at 9px 9px, rgba(201,168,76,0.48) 55%, transparent 55%),
@@ -141,47 +130,19 @@ body{font-family:'Lato',sans-serif;color:#fff;overflow-x:hidden;background:#0a04
     rgba(42,8,72,0.48);
   backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
   border:1px solid var(--glass-border);
-  border-radius:22px;
-  padding:2.2rem 1.8rem;
+  border-radius:22px;padding:2.2rem 1.8rem;
   position:relative;overflow:hidden;
-  box-shadow:0 8px 40px rgba(0,0,0,0.45),
-    inset 0 0 0 1px rgba(255,255,255,0.04),
-    0 0 30px rgba(107,45,139,0.1);
+  box-shadow:0 8px 40px rgba(0,0,0,0.45),inset 0 0 0 1px rgba(255,255,255,0.04),0 0 30px rgba(107,45,139,0.1);
 }
-.glass::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,transparent,var(--lavender),var(--gold),var(--hair-gold),var(--gold),var(--lavender),transparent);
-  border-radius:22px 22px 0 0;
-}
-.glass::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,rgba(179,136,216,0.4),rgba(201,168,76,0.3),rgba(179,136,216,0.4),transparent);
-  border-radius:0 0 22px 22px;
-}
+.glass::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--lavender),var(--gold),var(--hair-gold),var(--gold),var(--lavender),transparent);border-radius:22px 22px 0 0;}
+.glass::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(179,136,216,0.4),rgba(201,168,76,0.3),rgba(179,136,216,0.4),transparent);border-radius:0 0 22px 22px;}
 
-/* ─── SECTION ICONS ─── */
-.section-icon{
-  display:block;
-  width:52px;height:52px;
-  margin:0 auto 0.5rem;
-  filter:drop-shadow(0 0 10px rgba(201,168,76,0.6)) drop-shadow(0 0 4px rgba(179,136,216,0.4));
-}
-.section-emoji{font-size:2.2rem;display:block;text-align:center;margin-bottom:0.4rem;filter:drop-shadow(0 0 8px rgba(201,168,76,0.5))}
+.section-icon{display:block;width:52px;height:52px;margin:0 auto 0.5rem;filter:drop-shadow(0 0 10px rgba(201,168,76,0.6)) drop-shadow(0 0 4px rgba(179,136,216,0.4));}
+.section-title{font-family:'Cinzel',serif;font-size:clamp(1.1rem,4vw,1.5rem);color:var(--gold-light);text-align:center;letter-spacing:0.1em;margin-bottom:0.2rem;text-shadow:0 0 20px rgba(201,168,76,0.5)}
+.section-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--lavender);text-align:center;margin-bottom:1.2rem}
+.section-line{width:140px;height:26px;margin:0.6rem auto 1.2rem;display:block;background:none;}
+.section-body{font-size:0.97rem;line-height:1.85;color:rgba(255,255,255,0.9);text-align:center}
 
-.section-title{font-family:'Cinzel',serif;font-size:clamp(1.25rem,4.5vw,1.6rem);color:var(--gold-light);text-align:center;letter-spacing:0.1em;margin-bottom:0.2rem;text-shadow:0 0 20px rgba(201,168,76,0.5)}
-.section-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.12rem;color:var(--lavender);text-align:center;margin-bottom:1.2rem}
-
-/* Sun divider */
-.section-line{
-  width:140px;height:26px;
-  margin:0.6rem auto 1.2rem;
-  display:block;
-  background:none;
-}
-
-.section-body{font-size:1.08rem;line-height:1.9;color:rgba(255,255,255,0.9);text-align:center}
-
-/* ─── BOX FINALMENTE ─── */
 .box-finalmente{
   background:
     radial-gradient(circle 6px at 9px 9px, rgba(201,168,76,0.48) 55%, transparent 55%),
@@ -190,81 +151,42 @@ body{font-family:'Lato',sans-serif;color:#fff;overflow-x:hidden;background:#0a04
     radial-gradient(circle 6px at calc(100% - 9px) calc(100% - 9px), rgba(201,168,76,0.48) 55%, transparent 55%),
     rgba(10,4,22,0.55);
   backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  border:1px solid var(--gold);
-  border-radius:22px;
-  padding:2.5rem 2rem;
+  border:1px solid var(--gold);border-radius:22px;padding:2.5rem 2rem;
   text-align:center;position:relative;overflow:hidden;
   box-shadow:0 0 60px rgba(201,168,76,0.12),0 8px 40px rgba(0,0,0,0.5);
 }
-.box-finalmente::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,transparent,var(--lavender),var(--gold),var(--rose),var(--gold),var(--lavender),transparent);
-}
-.box-finalmente .big-lantern{
-  display:block;margin:0 auto 0.7rem;
-  animation:float 4s ease-in-out infinite;
-  filter:drop-shadow(0 0 16px rgba(248,232,124,0.7)) drop-shadow(0 0 8px rgba(201,168,76,0.5));
-}
+.box-finalmente::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--lavender),var(--gold),var(--rose),var(--gold),var(--lavender),transparent);}
+.box-finalmente .big-lantern{display:block;margin:0 auto 0.7rem;animation:float 4s ease-in-out infinite;filter:drop-shadow(0 0 16px rgba(248,232,124,0.7)) drop-shadow(0 0 8px rgba(201,168,76,0.5));}
 .box-finalmente h2{font-family:'Cinzel',serif;font-size:clamp(1.4rem,5vw,2rem);letter-spacing:0.06em;color:var(--gold-light);margin-bottom:1rem;text-shadow:0 0 30px rgba(201,168,76,0.5)}
-.box-finalmente p{font-family:'Cormorant Garamond',serif;font-size:clamp(1.05rem,2.8vw,1.22rem);color:rgba(255,255,255,0.88);line-height:1.9;max-width:420px;margin:0 auto}
+.box-finalmente p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(0.95rem,2.5vw,1.15rem);color:rgba(255,255,255,0.88);line-height:1.9;max-width:420px;margin:0 auto}
 
-/* ─── COUNTDOWN ─── */
 .date-pills{display:flex;gap:0.8rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}
-.date-pill{
-  background:rgba(107,45,139,0.22);
-  border:1px solid rgba(179,136,216,0.45);
-  border-radius:50px;padding:0.55rem 1.2rem;
-  font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--gold-light)
-}
+.date-pill{background:rgba(107,45,139,0.22);border:1px solid rgba(179,136,216,0.45);border-radius:50px;padding:0.55rem 1.2rem;font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--gold-light)}
 .countdown{display:flex;gap:0.7rem;justify-content:center;flex-wrap:wrap;margin-top:1.3rem}
-.cd-unit{
-  text-align:center;
-  background:rgba(107,45,139,0.18);
-  border:1px solid rgba(179,136,216,0.32);
-  border-radius:12px;padding:0.7rem 1rem;min-width:65px
-}
+.cd-unit{text-align:center;background:rgba(107,45,139,0.18);border:1px solid rgba(179,136,216,0.32);border-radius:12px;padding:0.7rem 1rem;min-width:65px}
 .cd-num{font-family:'Cinzel',serif;font-size:1.7rem;font-weight:600;color:var(--gold-light);display:block;line-height:1;text-shadow:0 0 20px rgba(201,168,76,0.6)}
 .cd-label{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:0.25rem}
 
-/* ─── MAPPA ─── */
 .map-wrap{position:relative;border-radius:0 0 6px 6px;overflow:hidden}
 .map-wrap svg{display:block;width:100%;height:auto}
-.map-label{
-  font-family:'Cinzel',serif;font-size:0.9rem;
-  color:var(--gold-light);letter-spacing:0.08em;
-  padding:1rem 1.4rem 0.6rem;display:flex;align-items:center;gap:0.5rem;
-}
 
-/* ─── MAPS BUTTON (mini) ─── */
 .maps-btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:4px;
-  padding:5px 11px;border-radius:50px;
+  display:inline-flex;align-items:center;justify-content:center;gap:5px;
+  padding:7px 14px;border-radius:50px;
   background:rgba(107,45,139,0.18);border:1px solid rgba(179,136,216,0.4);
-  color:#f0d98a;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.10em;
+  color:#f0d98a;font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.12em;
   text-transform:uppercase;text-decoration:none;transition:all 0.3s ease;
 }
 .maps-btn:hover{background:rgba(107,45,139,0.32);transform:translateY(-1px)}
-.maps-btn svg{flex-shrink:0}
 
-/* ─── TIMELINE ─── */
 .timeline{position:relative;padding-left:2.4rem;margin-top:0.5rem}
-.timeline::before{
-  content:'';position:absolute;left:0.85rem;top:0;bottom:0;width:1px;
-  background:linear-gradient(to bottom,var(--lavender),var(--gold),var(--lavender))
-}
+.timeline::before{content:'';position:absolute;left:0.85rem;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--lavender),var(--gold),var(--lavender))}
 .tl-item{position:relative;margin-bottom:1.3rem}
 .tl-item:last-child{margin-bottom:0}
-.tl-dot{
-  position:absolute;left:-2.08rem;top:0.2rem;
-  width:14px;height:14px;
-  background:var(--gold);
-  clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
-  box-shadow:0 0 8px rgba(201,168,76,0.8);
-}
-.tl-time{font-family:'Cinzel',serif;font-size:0.9rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.08rem}
-.tl-title{font-size:1.05rem;color:rgba(255,255,255,0.88);line-height:1.5}
+.tl-dot{position:absolute;left:-2.08rem;top:0.2rem;width:14px;height:14px;background:var(--gold);clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);box-shadow:0 0 8px rgba(201,168,76,0.8);}
+.tl-time{font-family:'Cinzel',serif;font-size:0.82rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.08rem}
+.tl-title{font-size:0.97rem;color:rgba(255,255,255,0.88);line-height:1.5}
 
-/* ─── BUTTONS ─── */
 .btn-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.4rem}
 .btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;border-radius:50px;font-family:'Cinzel',serif;font-size:0.82rem;letter-spacing:0.06em;text-decoration:none;cursor:pointer;border:none;transition:transform 0.2s,box-shadow 0.2s}
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.3)}
@@ -281,81 +203,33 @@ body{font-family:'Lato',sans-serif;color:#fff;overflow-x:hidden;background:#0a04
     radial-gradient(circle 6px at calc(100% - 9px) calc(100% - 9px), rgba(201,168,76,0.48) 55%, transparent 55%),
     rgba(10,4,22,0.62);
   backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  border:1px solid var(--glass-border);
-  border-radius:22px;
-  padding:2rem 1.8rem 2.2rem;
-  text-align:center;position:relative;overflow:hidden;
+  border:1px solid var(--glass-border);border-radius:22px;
+  padding:2rem 1.8rem 2.2rem;text-align:center;position:relative;overflow:hidden;
   box-shadow:0 0 60px rgba(107,45,139,0.18),0 8px 40px rgba(0,0,0,0.5);
 }
-.video-section-box::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,transparent,var(--rose),var(--gold),var(--lavender),var(--gold),var(--rose),transparent);
-  border-radius:22px 22px 0 0;
-}
-.video-section-box::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,rgba(179,136,216,0.4),rgba(201,168,76,0.3),rgba(179,136,216,0.4),transparent);
-  border-radius:0 0 22px 22px;
-}
-
-/* Cornice decorativa attorno al video */
-.video-frame-wrap{
-  position:relative;
-  margin:1.2rem 0;
-  display:inline-block;
-  width:100%;
-}
-.video-frame-wrap video{
-  display:block;
-  width:100%;
-  border-radius:10px;
-  box-shadow:0 0 32px rgba(179,136,216,0.25), 0 4px 20px rgba(0,0,0,0.6);
-}
-/* Angoli decorativi CSS */
-.video-corner{
-  position:absolute;
-  width:28px;height:28px;
-  pointer-events:none;
-}
+.video-section-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--rose),var(--gold),var(--lavender),var(--gold),var(--rose),transparent);border-radius:22px 22px 0 0;}
+.video-section-box::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(179,136,216,0.4),rgba(201,168,76,0.3),rgba(179,136,216,0.4),transparent);border-radius:0 0 22px 22px;}
+.video-frame-wrap{position:relative;margin:1.2rem 0;display:inline-block;width:100%;}
+.video-frame-wrap video{display:block;width:100%;border-radius:10px;box-shadow:0 0 32px rgba(179,136,216,0.25), 0 4px 20px rgba(0,0,0,0.6);}
+.video-corner{position:absolute;width:28px;height:28px;pointer-events:none;}
 .video-corner--tl{top:-4px;left:-4px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);border-radius:6px 0 0 0}
 .video-corner--tr{top:-4px;right:-4px;border-top:2px solid var(--gold);border-right:2px solid var(--gold);border-radius:0 6px 0 0}
 .video-corner--bl{bottom:-4px;left:-4px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold);border-radius:0 0 0 6px}
 .video-corner--br{bottom:-4px;right:-4px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);border-radius:0 0 6px 0}
-
-/* Fiori decorativi laterali SVG */
-.video-deco-flowers{
-  position:absolute;
-  pointer-events:none;
-  opacity:0.55;
-}
+.video-deco-flowers{position:absolute;pointer-events:none;opacity:0.55;}
 .video-deco-flowers--left{left:-2px;top:50%;transform:translateY(-50%)}
 .video-deco-flowers--right{right:-2px;top:50%;transform:translateY(-50%)}
+.video-caption{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.95rem;color:rgba(255,255,255,0.65);margin-top:0.8rem;letter-spacing:0.04em;}
 
-/* Caption sotto il video */
-.video-caption{
-  font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:0.95rem;color:rgba(255,255,255,0.65);
-  margin-top:0.8rem;letter-spacing:0.04em;
-}
-
-/* ─── REGALO ─── */
 .regalo-inner{background:rgba(107,45,139,0.12);border:1px dashed rgba(179,136,216,0.45);border-radius:12px;padding:1.4rem;text-align:center;margin-top:1rem}
 .regalo-inner p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.02rem;color:rgba(255,255,255,0.85);line-height:1.8;margin-bottom:1.2rem}
 
-/* ─── FOOTER ─── */
-footer{
-  position:relative;z-index:1;
-  background:rgba(5,2,10,0.75);
-  backdrop-filter:blur(16px);
-  text-align:center;padding:2.5rem 1.5rem;
-  border-top:1px solid rgba(201,168,76,0.2)
-}
+footer{position:relative;z-index:1;background:rgba(5,2,10,0.75);backdrop-filter:blur(16px);text-align:center;padding:2.5rem 1.5rem;border-top:1px solid rgba(201,168,76,0.2)}
 footer .footer-names{font-family:'Cinzel',serif;font-size:1.25rem;letter-spacing:0.12em;color:var(--gold-light);margin-bottom:0.4rem}
 footer p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:rgba(255,255,255,0.6)}
 .footer-lanterns{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1rem;opacity:0.55}
 .footer-lanterns span{font-family:'Great Vibes',cursive;font-size:1.4rem;color:var(--rose)}
 
-/* ─── REVEAL ─── */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
@@ -419,8 +293,6 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem
 <!-- SAVE THE DATE VIDEO -->
 <div class="section reveal">
   <div class="video-section-box">
-
-    <!-- Titolo con icona lanterna -->
     <svg width="32" height="44" viewBox="0 0 36 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
          style="display:block;margin:0 auto 0.5rem;filter:drop-shadow(0 0 10px rgba(248,232,124,0.7)) drop-shadow(0 0 5px rgba(201,168,76,0.5));animation:float 3.5s ease-in-out infinite">
       <line x1="18" y1="0" x2="18" y2="7" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
@@ -430,11 +302,8 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem
       <ellipse cx="18" cy="28" rx="6.5" ry="9" fill="white" opacity="0.3"/>
       <path d="M11.5,43 Q14.5,49 18,51 Q21.5,49 24.5,43 Z" fill="#c9a84c" opacity="0.78"/>
     </svg>
-
     <h2 class="section-title" style="font-size:clamp(1.1rem,4vw,1.45rem)">Save the Date</h2>
     <p class="section-subtitle" style="margin-bottom:0.3rem">Il palcoscenico della nostra favola</p>
-
-    <!-- Divisore sole -->
     <div class="section-line">
       <svg viewBox="0 0 140 26" xmlns="http://www.w3.org/2000/svg" width="140" height="26" aria-hidden="true">
         <line x1="0" y1="13" x2="54" y2="13" stroke="#c9a84c" stroke-width="0.8" stroke-opacity="0.5"/>
@@ -450,43 +319,27 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem
         <line x1="78.2" y1="21.2" x2="74" y2="17" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/>
       </svg>
     </div>
-
-    <!-- Testo introduttivo -->
-    <p class="section-body" style="margin-bottom:1.2rem;font-family:'Cormorant Garamond',serif;font-size:1.08rem">
+    <p class="section-body" style="margin-bottom:1.2rem;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem">
       Questo è il Parco Gambrinus — il luogo incantato<br>
       dove la nostra storia scritta nelle stelle<br>
       diventerà realtà. 🌿🏰✨
     </p>
-
-    <!-- VIDEO con cornice decorativa -->
     <div class="video-frame-wrap">
-      <!-- Angoli dorati -->
       <div class="video-corner video-corner--tl"></div>
       <div class="video-corner video-corner--tr"></div>
       <div class="video-corner video-corner--bl"></div>
       <div class="video-corner video-corner--br"></div>
-
-      <!-- Fiori SVG sinistra -->
-      <svg class="video-deco-flowers video-deco-flowers--left"
-           width="18" height="80" viewBox="0 0 18 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <!-- Stem -->
+      <svg class="video-deco-flowers video-deco-flowers--left" width="18" height="80" viewBox="0 0 18 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <line x1="9" y1="5" x2="9" y2="75" stroke="#4a8a4a" stroke-width="1.2" stroke-linecap="round"/>
-        <!-- Flower top -->
         <circle cx="9" cy="10" r="4.5" fill="#b388d8" opacity="0.8"/>
         <circle cx="9" cy="10" r="2.5" fill="#f8e87c"/>
-        <!-- Leaf mid -->
         <path d="M9,38 Q16,32 14,24" stroke="#4a8a4a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-        <!-- Flower bottom -->
         <circle cx="9" cy="66" r="3.5" fill="#e8a0b0" opacity="0.8"/>
         <circle cx="9" cy="66" r="2" fill="#f8e87c"/>
-        <!-- Small buds -->
         <circle cx="9" cy="30" r="2" fill="#b388d8" opacity="0.6"/>
         <circle cx="9" cy="50" r="1.5" fill="#e8a0b0" opacity="0.6"/>
       </svg>
-
-      <!-- Fiori SVG destra -->
-      <svg class="video-deco-flowers video-deco-flowers--right"
-           width="18" height="80" viewBox="0 0 18 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <svg class="video-deco-flowers video-deco-flowers--right" width="18" height="80" viewBox="0 0 18 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <line x1="9" y1="5" x2="9" y2="75" stroke="#4a8a4a" stroke-width="1.2" stroke-linecap="round"/>
         <circle cx="9" cy="10" r="4.5" fill="#e8a0b0" opacity="0.8"/>
         <circle cx="9" cy="10" r="2.5" fill="#f8e87c"/>
@@ -496,32 +349,15 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem
         <circle cx="9" cy="30" r="2" fill="#e8a0b0" opacity="0.6"/>
         <circle cx="9" cy="50" r="1.5" fill="#b388d8" opacity="0.6"/>
       </svg>
-
-      <!-- Il video — sostituisci "save-the-date.mp4" con il nome del tuo file -->
-      <video
-        src="save-the-date.mp4"
-        controls
-        playsinline
-        preload="metadata"
-        poster=""
-        style="width:100%;border-radius:10px;display:block;
-               box-shadow:0 0 32px rgba(179,136,216,0.25), 0 4px 20px rgba(0,0,0,0.6);">
+      <video src="save-the-date.mp4" controls playsinline preload="metadata" poster=""
+        style="width:100%;border-radius:10px;display:block;box-shadow:0 0 32px rgba(179,136,216,0.25), 0 4px 20px rgba(0,0,0,0.6);">
       </video>
     </div>
-
-    <!-- Caption sotto il video -->
-    <p class="video-caption">
-      🌿 Parco Gambrinus · San Polo di Piave (TV) · 4 Settembre 2026 🌿
-    </p>
-
-    <!-- Citazione stile Rapunzel -->
-    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;
-              font-size:1.05rem;color:rgba(255,255,255,0.75);margin-top:1rem;
-              line-height:1.8;border-top:1px solid rgba(201,168,76,0.2);padding-top:1rem;">
+    <p class="video-caption">🌿 Parco Gambrinus · San Polo di Piave (TV) · 4 Settembre 2026 🌿</p>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:rgba(255,255,255,0.75);margin-top:1rem;line-height:1.8;border-top:1px solid rgba(201,168,76,0.2);padding-top:1rem;">
       <em style="color:var(--gold-light)">"Ho un sogno…"</em><br>
       e quel sogno porta il tuo nome. 💛
     </p>
-
   </div>
 </div>
 
@@ -557,13 +393,12 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem
       <div class="date-pill">🗓 Venerdì 4 Settembre 2026</div>
       <div class="date-pill">🕓 dalle ore 16:00</div>
     </div>
-    <!-- COUNTDOWN senza secondi -->
     <div class="countdown" id="countdown">
       <div class="cd-unit"><span class="cd-num" id="cd-days">--</span><span class="cd-label">giorni</span></div>
       <div class="cd-unit"><span class="cd-num" id="cd-hours">--</span><span class="cd-label">ore</span></div>
       <div class="cd-unit"><span class="cd-num" id="cd-min">--</span><span class="cd-label">minuti</span></div>
     </div>
-    <p class="section-body" style="margin-top:1rem;font-family:'Cormorant Garamond',serif;color:var(--lavender)">Segnati la data… e preparati alla magia! ✨</p>
+    <p class="section-body" style="margin-top:1rem;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--lavender)">Segnati la data… e preparati alla magia! ✨</p>
   </div>
 </div>
 
@@ -580,7 +415,7 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem
         <rect x="14" y="30" width="12" height="13" rx="6 6 0 0" fill="#f8e87c" opacity="0.88"/>
         <rect x="14" y="44" width="12" height="8" rx="4 4 0 0" fill="#2a0840"/>
       </svg>
-      <span class="map-label" style="padding:0;font-family:'Cinzel',serif;font-size:0.9rem;color:var(--gold-light);letter-spacing:0.08em;">Dove ci sposiamo</span>
+      <span style="padding:0;font-family:'Cinzel',serif;font-size:0.9rem;color:var(--gold-light);letter-spacing:0.08em;">Dove ci sposiamo</span>
     </div>
     <div style="padding:0 1.8rem 0.6rem;">
       <p class="section-subtitle" style="margin-bottom:0.4rem">Il luogo della nostra favola</p>
@@ -600,12 +435,9 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem
             <stop offset="0%" stop-color="#3a1a55" stop-opacity="1"/>
             <stop offset="100%" stop-color="#1a0828" stop-opacity="1"/>
           </radialGradient>
-          <radialGradient id="pinpulse" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#f0d98a" stop-opacity="0.8"/>
-            <stop offset="100%" stop-color="#d4a843" stop-opacity="0"/>
-          </radialGradient>
         </defs>
         <rect width="360" height="200" fill="url(#skyglow)"/>
+        <!-- Stars -->
         <circle cx="20" cy="15" r="1" fill="#f0d98a" opacity="0.7"/>
         <circle cx="50" cy="8" r="0.8" fill="#f0d98a" opacity="0.5"/>
         <circle cx="90" cy="20" r="1" fill="#f0d98a" opacity="0.6"/>
@@ -616,13 +448,16 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem
         <circle cx="340" cy="25" r="0.8" fill="#f0d98a" opacity="0.4"/>
         <circle cx="160" cy="5" r="0.6" fill="#f0d98a" opacity="0.5"/>
         <circle cx="280" cy="30" r="0.6" fill="#f0d98a" opacity="0.4"/>
+        <!-- River -->
         <path d="M0,155 Q90,145 180,158 Q270,170 360,155 L360,182 Q270,195 180,182 Q90,168 0,178 Z" fill="#2a4a7a" opacity="0.5"/>
+        <!-- Roads -->
         <line x1="30" y1="120" x2="330" y2="120" stroke="#4a3060" stroke-width="8"/>
         <line x1="30" y1="120" x2="330" y2="120" stroke="#5a3870" stroke-width="5"/>
         <line x1="180" y1="60" x2="180" y2="155" stroke="#3a2050" stroke-width="6"/>
         <line x1="0" y1="90" x2="120" y2="120" stroke="#3a2050" stroke-width="5"/>
         <line x1="240" y1="120" x2="360" y2="95" stroke="#3a2050" stroke-width="5"/>
         <text x="180" y="116" font-family="sans-serif" font-size="7" fill="#c8a8d8" text-anchor="middle" opacity="0.9">Via Capitello</text>
+        <!-- Trees (park area) -->
         <g opacity="0.85">
           <circle cx="128" cy="90" r="11" fill="#1a4a20"/>
           <circle cx="144" cy="84" r="9" fill="#1e5a24"/>
@@ -631,6 +466,7 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem
           <circle cx="104" cy="91" r="8" fill="#163a1a"/>
           <circle cx="174" cy="85" r="8" fill="#1a4a20"/>
         </g>
+        <!-- Decorative tower (top-right, large) -->
         <g transform="translate(254,44)">
           <polygon points="12,0 0,18 24,18" fill="#6b2d8b" stroke="#b388d8" stroke-width="0.6"/>
           <rect x="-3" y="12" width="5" height="6" rx="1" fill="#5a1a80"/>
@@ -642,6 +478,7 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem
           <line x1="12" y1="0" x2="12" y2="-5" stroke="#c9a84c" stroke-width="1"/>
           <polygon points="12,-5 20,-2 12,1" fill="#c9a84c"/>
         </g>
+        <!-- Small decorative lanterns -->
         <g transform="translate(316,44)" opacity="0.7">
           <rect x="-5" y="0" width="10" height="14" rx="2" fill="#f0d98a" opacity="0.9"/>
           <line x1="0" y1="-5" x2="0" y2="0" stroke="#d4a843" stroke-width="1"/>
@@ -654,23 +491,37 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem
           <polygon points="-5,14 5,14 3,19 -3,19" fill="#d4a843" opacity="0.6"/>
           <circle cx="0" cy="7" r="3" fill="#fff8e0" opacity="0.85"/>
         </g>
-        <g transform="translate(178,108)">
-          <circle cx="0" cy="0" r="10" fill="url(#pinpulse)" opacity="0.3"/>
-          <circle cx="0" cy="0" r="6" fill="#d4a843" opacity="0.55"/>
-          <circle cx="0" cy="0" r="3.5" fill="#f0d98a"/>
-          <circle cx="0" cy="0" r="12" fill="none" stroke="#d4a843" stroke-width="1.5" opacity="0.5">
-            <animate attributeName="r" from="8" to="18" dur="2s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" from="0.5" to="0" dur="2s" repeatCount="indefinite"/>
-          </circle>
+        <!-- ═══ PIN: mini torretta Rapunzel ═══
+             Base centrata a x=178, posizionata sopra la label.
+             Torre: 16px larga, ~36px alta, con spira, finestra luminosa e bandierina. -->
+        <g transform="translate(170,60)">
+          <!-- Spira -->
+          <polygon points="8,0 0,12 16,12" fill="#6b2d8b" stroke="#d4b8f0" stroke-width="0.6"/>
+          <!-- Merlature -->
+          <rect x="-1" y="8"  width="4" height="4" rx="0.7" fill="#5a1a80"/>
+          <rect x="6"  y="8"  width="3" height="4" rx="0.7" fill="#5a1a80"/>
+          <rect x="13" y="8"  width="4" height="4" rx="0.7" fill="#5a1a80"/>
+          <!-- Corpo torre -->
+          <rect x="0" y="12" width="16" height="22" rx="1" fill="#3d0e60" stroke="#9b59c6" stroke-width="0.7"/>
+          <!-- Finestra luminosa -->
+          <rect x="5" y="17" width="6" height="8" rx="3 3 0 0" fill="#f8e87c" opacity="0.95"/>
+          <rect x="6" y="18" width="4" height="5" rx="2 2 0 0" fill="#fffde0" opacity="0.5"/>
+          <!-- Porta -->
+          <rect x="5" y="28" width="6" height="6" rx="2 2 0 0" fill="#2a0840"/>
+          <!-- Bandierina -->
+          <line x1="8" y1="0" x2="8" y2="-5" stroke="#c9a84c" stroke-width="0.9"/>
+          <polygon points="8,-5 15,-2.5 8,0" fill="#c9a84c"/>
+          <!-- Ombra base -->
+          <ellipse cx="8" cy="34" rx="6" ry="1.8" fill="rgba(0,0,0,0.4)"/>
         </g>
+        <!-- Label Parco Gambrinus -->
         <rect x="118" y="130" width="124" height="18" rx="4" fill="#2a1038" opacity="0.88"/>
         <text x="180" y="143" font-family="sans-serif" font-size="8.5" fill="#f0d98a" text-anchor="middle" font-weight="bold">Parco Gambrinus</text>
         <text x="180" y="162" font-family="sans-serif" font-size="7" fill="#c8a8d8" text-anchor="middle" opacity="0.75">San Polo di Piave (TV)</text>
       </svg>
-      <!-- PULSANTE GOOGLE MAPS — ridotto -->
       <div style="text-align:center;padding:0.8rem 0 0.6rem;width:100%;">
         <a href="https://maps.google.com/?q=Parco+Gambrinus+Via+Capitello+18+San+Polo+di+Piave" target="_blank" class="maps-btn">
-          <svg width="8" height="8" viewBox="0 0 40 54" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <svg width="10" height="10" viewBox="0 0 40 54" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <polygon points="20,8 5,22 35,22" fill="#f0d98a"/>
             <rect x="7" y="22" width="26" height="22" rx="2" fill="#f0d98a"/>
             <rect x="14" y="30" width="12" height="10" rx="5 5 0 0" fill="#3d0e60" opacity="0.7"/>
@@ -833,23 +684,29 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem
   </div>
 </footer>
 
-</div><!-- end .page -->
+</div>
 
 <script>
+// iOS background fix
+(function(){
+  const img = document.querySelector('.bg-fixed img');
+  if(img){ window.addEventListener('resize', () => img.style.transform='translateZ(0)'); }
+})();
+
 // ─── FLOATING LANTERNS ───
 (function(){
   const hero = document.querySelector('.hero');
   const lanterns = [
-    {left:'7%',   dur:'9s',   delay:'0s',    w:18, h:26},
-    {left:'19%',  dur:'7.5s', delay:'1.8s',  w:14, h:20},
-    {left:'32%',  dur:'11s',  delay:'0.6s',  w:20, h:28},
-    {left:'47%',  dur:'8.5s', delay:'3.2s',  w:16, h:22},
-    {left:'60%',  dur:'10s',  delay:'1.1s',  w:19, h:27},
-    {left:'74%',  dur:'7s',   delay:'2.4s',  w:15, h:21},
-    {left:'86%',  dur:'9.5s', delay:'4.2s',  w:18, h:25},
-    {left:'93%',  dur:'8s',   delay:'5.8s',  w:13, h:18},
-    {left:'13%',  dur:'12s',  delay:'6.5s',  w:16, h:23},
-    {left:'54%',  dur:'8.2s', delay:'7s',    w:14, h:20},
+    {left:'7%',dur:'9s',delay:'0s',w:18,h:26},
+    {left:'19%',dur:'7.5s',delay:'1.8s',w:14,h:20},
+    {left:'32%',dur:'11s',delay:'0.6s',w:20,h:28},
+    {left:'47%',dur:'8.5s',delay:'3.2s',w:16,h:22},
+    {left:'60%',dur:'10s',delay:'1.1s',w:19,h:27},
+    {left:'74%',dur:'7s',delay:'2.4s',w:15,h:21},
+    {left:'86%',dur:'9.5s',delay:'4.2s',w:18,h:25},
+    {left:'93%',dur:'8s',delay:'5.8s',w:13,h:18},
+    {left:'13%',dur:'12s',delay:'6.5s',w:16,h:23},
+    {left:'54%',dur:'8.2s',delay:'7s',w:14,h:20},
   ];
   const container = document.createElement('div');
   container.className = 'lanterns-bg';
@@ -885,7 +742,7 @@ function updateCD(){
   document.getElementById('cd-min').textContent   = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
 }
 updateCD();
-setInterval(updateCD, 30000); // aggiorna ogni 30s (non servono i secondi)
+setInterval(updateCD, 30000);
 
 // ─── REVEAL ON SCROLL ───
 const obs = new IntersectionObserver(es => {
