@@ -444,6 +444,8 @@ footer p{
   .video-quote{font-size:1rem}
   .hotel-inner{padding:1.1rem}
 }
+
+.gift-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-top:1.2rem}.gift-card{background:rgba(10,4,22,.45);border:1px solid rgba(201,168,76,.25);border-radius:16px;padding:1rem;text-align:center}.gift-card h4{color:var(--gold-light);font-family:var(--title-font);font-size:.9rem;margin:.5rem 0}.gift-card p{font-size:.95rem;color:rgba(255,255,255,.75)}@keyframes giftPop{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
 </style>
 </head>
 <body>
@@ -626,29 +628,115 @@ footer p{
           <rect x="10" y="12" width="4" height="6" rx="1" fill="#5a1a80"/>
           <rect x="19" y="12" width="5" height="6" rx="1" fill="#5a1a80"/>
           <rect x="0" y="18" width="24" height="34" rx="1" fill="#3d0e60" stroke="#7b2d8b" stroke-width="0.8"/>
-          <rect x="8" y="26" width="8" height="26" rx="3" fill="#200630"/>
-          <line x1="12" y1="26" x2="12" y2="52" stroke="#b388d8" stroke-width="0.5"/>
-          <rect x="2" y="24" width="4" height="10" rx="1.5" fill="#f8e87c" opacity="0.8"/>
-          <rect x="18" y="24" width="4" height="10" rx="1.5" fill="#f8e87c" opacity="0.8"/>
-          <rect x="2" y="38" width="4" height="10" rx="1.5" fill="#f8e87c" opacity="0.6"/>
-          <rect x="18" y="38" width="4" height="10" rx="1.5" fill="#f8e87c" opacity="0.6"/>
+          <rect x="8" y="26" width="8" height="10" rx="4 4 0 0" fill="#f8e87c" opacity="0.9"/>
+          <rect x="8" y="44" width="8" height="8" rx="3 3 0 0" fill="#2a0840"/>
+          <line x1="12" y1="0" x2="12" y2="-5" stroke="#c9a84c" stroke-width="1"/>
+          <polygon points="12,-5 20,-2 12,1" fill="#c9a84c"/>
         </g>
-        <circle cx="180" cy="120" r="14" fill="url(#pinpulse)"/>
-        <g transform="translate(180,120)">
-          <path d="M0,0 C-10,-12 -12,-20 -12,-24 A12,12 0 1,1 12,-24 C12,-20 10,-12 0,0 Z" fill="#b388d8"/>
-          <path d="M0,0 C-10,-12 -12,-20 -12,-24 A12,12 0 1,1 12,-24 C12,-20 10,-12 0,0 Z" stroke="#fff" stroke-width="1.5" fill="none"/>
-          <circle cx="0" cy="-24" r="5" fill="#2d0a4e"/>
-          <path d="M-2.5,-25 L-2.5,-23 Q-2.5,-21 0,-21 Q2.5,-21 2.5,-23 L2.5,-25 Q2.5,-27 0,-27 Q-2.5,-27 -2.5,-25 Z" fill="#c9a84c"/>
-          <line x1="0" y1="-28" x2="0" y2="-27" stroke="#c9a84c" stroke-width="0.8"/>
-          <line x1="0" y1="-21" x2="0" y2="-20" stroke="#c9a84c" stroke-width="0.8"/>
-          <line x1="-3" y1="-24" x2="-2.5" y2="-24" stroke="#c9a84c" stroke-width="0.8"/>
-          <line x1="2.5" y1="-24" x2="3" y2="-24" stroke="#c9a84c" stroke-width="0.8"/>
+        <g transform="translate(316,44)" opacity="0.7">
+          <rect x="-5" y="0" width="10" height="14" rx="2" fill="#f0d98a" opacity="0.9"/>
+          <line x1="0" y1="-5" x2="0" y2="0" stroke="#d4a843" stroke-width="1"/>
+          <polygon points="-5,14 5,14 3,19 -3,19" fill="#d4a843" opacity="0.6"/>
+          <circle cx="0" cy="7" r="3" fill="#fff8e0" opacity="0.85"/>
         </g>
+        <g transform="translate(34,44)" opacity="0.6">
+          <rect x="-5" y="0" width="10" height="14" rx="2" fill="#f0d98a" opacity="0.9"/>
+          <line x1="0" y1="-5" x2="0" y2="0" stroke="#d4a843" stroke-width="1"/>
+          <polygon points="-5,14 5,14 3,19 -3,19" fill="#d4a843" opacity="0.6"/>
+          <circle cx="0" cy="7" r="3" fill="#fff8e0" opacity="0.85"/>
+        </g>
+        <g transform="translate(178,108)">
+          <circle cx="0" cy="0" r="10" fill="url(#pinpulse)" opacity="0.3"/>
+          <circle cx="0" cy="0" r="6" fill="#d4a843" opacity="0.55"/>
+          <circle cx="0" cy="0" r="3.5" fill="#f0d98a"/>
+          <circle cx="0" cy="0" r="12" fill="none" stroke="#d4a843" stroke-width="1.5" opacity="0.5">
+            <animate attributeName="r" from="8" to="18" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" from="0.5" to="0" dur="2s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+        <rect x="118" y="130" width="124" height="18" rx="4" fill="#2a1038" opacity="0.88"/>
+        <text x="180" y="143" font-family="sans-serif" font-size="8.5" fill="#f0d98a" text-anchor="middle" font-weight="bold">Parco Gambrinus</text>
+        <text x="180" y="162" font-family="sans-serif" font-size="7" fill="#c8a8d8" text-anchor="middle" opacity="0.75">San Polo di Piave (TV)</text>
       </svg>
       <div class="map-inner-footer">
-        <a class="maps-btn" href="https://maps.google.com/?q=Via+Capitello+18+San+Polo+di+Piave" target="_blank">
-          Apri in Google Maps 
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        <a href="https://maps.google.com/?q=Parco+Gambrinus,+San+Polo+di+Piave" target="_blank" class="maps-btn">
+          <svg width="10" height="10" viewBox="0 0 40 54" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <polygon points="20,8 5,22 35,22" fill="#f0d98a"/>
+            <rect x="7" y="22" width="26" height="22" rx="2" fill="#f0d98a"/>
+            <rect x="14" y="30" width="12" height="10" rx="5 5 0 0" fill="#3d0e60" opacity="0.7"/>
+          </svg>
+          Apri in Google Maps
+        </a>
+      </div>
+    </div>
+
+    <!-- Separatore -->
+    <div class="std-divider" style="margin-top:1.4rem"></div>
+
+    <!-- Countdown -->
+    <div class="date-pills" style="margin-top:1.2rem">
+      <div class="date-pill">🗓 Venerdì 04 Settembre 2026</div>
+    </div>
+    <div class="countdown" id="countdown">
+      <div class="cd-unit"><span class="cd-num" id="cd-days">--</span><span class="cd-label">giorni</span></div>
+      <div class="cd-unit"><span class="cd-num" id="cd-hours">--</span><span class="cd-label">ore</span></div>
+      <div class="cd-unit"><span class="cd-num" id="cd-min">--</span><span class="cd-label">minuti</span></div>
+    </div>
+    <p class="section-body" style="margin-top:1rem;color:var(--lavender)">Segnati la data… e preparati a festeggiare con noi! ✨</p>
+  </div>
+</div>
+
+<div class="section reveal">
+  <div class="glass">
+    <svg class="section-icon" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M28,6 Q18,10 18,22 Q18,34 28,38 Q14,38 10,26 Q6,14 16,7 Q21,4 28,6Z" fill="#b388d8" opacity="0.85"/>
+      <circle cx="34" cy="10" r="2" fill="#f8e87c" opacity="0.9"/>
+      <circle cx="38" cy="20" r="1.3" fill="#f8e87c" opacity="0.7"/>
+      <circle cx="32" cy="28" r="1" fill="#f8e87c" opacity="0.6"/>
+      <circle cx="40" cy="8" r="0.8" fill="#f0d98a" opacity="0.55"/>
+      <polygon points="38,32 39.2,35.5 43,35.5 40,37.5 41.2,41 38,39 34.8,41 36,37.5 33,35.5 36.8,35.5" fill="#f0d98a" opacity="0.7" transform="scale(0.55) translate(31,18)"/>
+    </svg>
+    <h2 class="section-title">Dove dormirete</h2>
+    <p class="section-subtitle">Tutto è pronto per voi 🌙</p>
+    <div class="section-line">
+      <svg viewBox="0 0 140 26" xmlns="http://www.w3.org/2000/svg" width="140" height="26" aria-hidden="true">
+        <line x1="0" y1="13" x2="54" y2="13" stroke="#c9a84c" stroke-width="0.8" stroke-opacity="0.5"/>
+        <line x1="86" y1="13" x2="140" y2="13" stroke="#c9a84c" stroke-width="0.8" stroke-opacity="0.5"/>
+        <circle cx="70" cy="13" r="5.5" fill="#c9a84c"/>
+        <line x1="70" y1="1" x2="70" y2="7" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="70" y1="19" x2="70" y2="25" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="58" y1="13" x2="64" y2="13" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="76" y1="13" x2="82" y2="13" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="61.8" y1="4.8" x2="66" y2="9" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/>
+        <line x1="78.2" y1="4.8" x2="74" y2="9" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/>
+        <line x1="61.8" y1="21.2" x2="66" y2="17" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/>
+        <line x1="78.2" y1="21.2" x2="74" y2="17" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <p class="section-body">
+      Avete viaggiato per stare con noi — e noi vogliamo
+      prenderci cura di voi. La notte del 4 settembre
+      sarete nostri ospiti all'Hotel Villa Maternini. 🛏️✨
+    </p>
+
+    <div class="hotel-inner">
+      <div class="hotel-name">🏨 Hotel Villa Maternini</div>
+      <div class="hotel-address" style="margin-top:0.25rem"> Via Pier Antonio Mutti, 7, Vazzola (TV)</div>
+      <p class="hotel-note">
+        Tutti i dettagli pratici — orari del check-in, informazioni sulla camera
+        e ogni altra cosa utile — vi verranno comunicati prossimamente. 💌
+      </p>
+      <div class="btn-row" style="margin-top:0.6rem">
+        <a class="btn btn-primary" href="https://www.villamaternini.com/" target="_blank" rel="noopener">
+          🏨 Sito dell'hotel
+        </a>
+        <a class="btn btn-dark" href="https://maps.google.com/?q=Hotel+Villa+Maternini,+San+Polo+di+Piave" target="_blank" rel="noopener">
+          <svg width="10" height="10" viewBox="0 0 40 54" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <polygon points="20,8 5,22 35,22" fill="#f0d98a"/>
+            <rect x="7" y="22" width="26" height="22" rx="2" fill="#f0d98a"/>
+            <rect x="14" y="30" width="12" height="10" rx="5 5 0 0" fill="#3d0e60" opacity="0.7"/>
+          </svg>
+          Google Maps
         </a>
       </div>
     </div>
@@ -657,20 +745,63 @@ footer p{
 
 <div class="section reveal">
   <div class="glass">
+    <svg class="section-icon" viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="9" y1="48" x2="31" y2="14" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/>
+      <polygon points="31,5 33.4,12 41,12 35,17 37.4,24 31,19 24.6,24 27,17 21,12 28.6,12" fill="#f8e87c"/>
+      <circle cx="7" cy="30" r="2.5" fill="#b388d8" opacity="0.8"/>
+      <circle cx="15" cy="21" r="1.8" fill="#f0d98a" opacity="0.7"/>
+      <circle cx="22" cy="39" r="2" fill="#b388d8" opacity="0.6"/>
+      <circle cx="5" cy="43" r="1.5" fill="#f0d98a" opacity="0.5"/>
+      <polygon points="2,8 4,11 2,14 0,11" fill="#f0d98a" opacity="0.55"/>
+      <polygon points="34,44 36,47 34,50 32,47" fill="#b388d8" opacity="0.45"/>
+    </svg>
+    <h2 class="section-title">Come sarà la giornata</h2>
+    <p class="section-subtitle"></p>
+    <div class="section-line">
+      <svg viewBox="0 0 140 26" xmlns="http://www.w3.org/2000/svg" width="140" height="26" aria-hidden="true">
+        <line x1="0" y1="13" x2="54" y2="13" stroke="#c9a84c" stroke-width="0.8" stroke-opacity="0.5"/>
+        <line x1="86" y1="13" x2="140" y2="13" stroke="#c9a84c" stroke-width="0.8" stroke-opacity="0.5"/>
+        <circle cx="70" cy="13" r="5.5" fill="#c9a84c"/>
+        <line x1="70" y1="1" x2="70" y2="7" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="70" y1="19" x2="70" y2="25" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="58" y1="13" x2="64" y2="13" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="76" y1="13" x2="82" y2="13" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="61.8" y1="4.8" x2="66" y2="9" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/>
+        <line x1="78.2" y1="4.8" x2="74" y2="9" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/>
+        <line x1="61.8" y1="21.2" x2="66" y2="17" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/>
+        <line x1="78.2" y1="21.2" x2="74" y2="17" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <p class="section-body" style="margin-bottom:1.4rem">Una giornata pensata per condividere emozioni, 
+      sorrisi e momenti speciali con le persone che amiamo. 💫</p>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">16:00</div><div class="tl-title">🌟 Arrivo degli ospiti 🏮 </div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">17:00</div><div class="tl-title">💐 Cerimonia 🤵🏻‍♀️👰🏻‍♀️ </div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">18:30</div><div class="tl-title">🥂 Aperitivo con musica, bollicine e sorrisi ✨</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">20:00</div><div class="tl-title">🍽️ Cena 🕯️</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">23:00</div><div class="tl-title">🎂 Taglio torta 🌸 </div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">23:30</div><div class="tl-title">💃 Si balla con l'accompagnamento di Leslie in the Cloud 🎶✨</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">01:00</div><div class="tl-title">🌙 Fine serata  – stanchi ma felici!🏮</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section reveal">
+  <div class="glass">
     <svg class="section-icon" viewBox="0 0 40 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <line x1="20" y1="29" x2="20" y2="44" stroke="#4a8a4a" stroke-width="2" stroke-linecap="round"/>
       <path d="M20,36 Q28,32 25,26" stroke="#4a8a4a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-      <ellipse cx="20" cy="8" rx="5" ry="9" fill="#e8a0b0" opacity="0.88"/>
-      <ellipse cx="20" cy="8" rx="5" ry="9" fill="#d37c8e" opacity="0.82" transform="rotate(60,20,20)"/>
-      <ellipse cx="20" cy="8" rx="5" ry="9" fill="#e8a0b0" opacity="0.88" transform="rotate(120,20,20)"/>
-      <ellipse cx="20" cy="8" rx="5" ry="9" fill="#d37c8e" opacity="0.82" transform="rotate(180,20,20)"/>
-      <ellipse cx="20" cy="8" rx="5" ry="9" fill="#e8a0b0" opacity="0.88" transform="rotate(240,20,20)"/>
-      <ellipse cx="20" cy="8" rx="5" ry="9" fill="#d37c8e" opacity="0.82" transform="rotate(300,20,20)"/>
+      <ellipse cx="20" cy="8" rx="5" ry="9" fill="#b388d8" opacity="0.88"/>
+      <ellipse cx="20" cy="8" rx="5" ry="9" fill="#9b59b6" opacity="0.82" transform="rotate(60,20,20)"/>
+      <ellipse cx="20" cy="8" rx="5" ry="9" fill="#b388d8" opacity="0.88" transform="rotate(120,20,20)"/>
+      <ellipse cx="20" cy="8" rx="5" ry="9" fill="#9b59b6" opacity="0.82" transform="rotate(180,20,20)"/>
+      <ellipse cx="20" cy="8" rx="5" ry="9" fill="#b388d8" opacity="0.88" transform="rotate(240,20,20)"/>
+      <ellipse cx="20" cy="8" rx="5" ry="9" fill="#9b59b6" opacity="0.82" transform="rotate(300,20,20)"/>
       <circle cx="20" cy="20" r="7" fill="#f8e87c"/>
       <circle cx="20" cy="20" r="4" fill="#f5d26c"/>
     </svg>
-    <h2 class="section-title">Timeline</h2>
-    <p class="section-subtitle">Lo svolgersi della magia</p>
+    <h2 class="section-title">Confermaci la tua presenza</h2>
+    <p class="section-subtitle">Non vediamo l'ora di vederti!</p>
     <div class="section-line">
       <svg viewBox="0 0 140 26" xmlns="http://www.w3.org/2000/svg" width="140" height="26" aria-hidden="true">
         <line x1="0" y1="13" x2="54" y2="13" stroke="#c9a84c" stroke-width="0.8" stroke-opacity="0.5"/>
@@ -686,32 +817,14 @@ footer p{
         <line x1="78.2" y1="21.2" x2="74" y2="17" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/>
       </svg>
     </div>
-    
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <p class="tl-time">17:00</p>
-        <p class="tl-title">Arrivo degli ospiti e brindisi di benvenuto</p>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <p class="tl-time">17:30</p>
-        <p class="tl-title">Cerimonia sotto i rami incantati</p>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <p class="tl-time">18:30</p>
-        <p class="tl-title">Aperitivo nel bosco incantato e Musica</p>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <p class="tl-time">20:30</p>
-        <p class="tl-title">Cena</p>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <p class="tl-time">22:30</p>
-        <p class="tl-title">Taglio della Torta e balli fino a tardi</p>
+    <div class="section-body">
+      <p>
+        Facci sapere se farai parte di questa giornata speciale ✨<br>
+        <strong style="color:var(--gold-light)">Risposta entro il 14 Luglio 2026</strong><br><br>
+        Puoi confermare compilando il modulo, ci aiuterai ad organizzare al meglio la giornata:
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://docs.google.com/forms/d/1RP14mT2KsCG68HjpkoQrxa9bK7r-5hP6IYndE-MEL80/viewform?usp=sf_link" target="_blank">📝 Modulo di conferma</a>
       </div>
     </div>
   </div>
@@ -719,20 +832,18 @@ footer p{
 
 <div class="section reveal">
   <div class="glass">
-    <svg class="section-icon" viewBox="0 0 40 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <line x1="20" y1="29" x2="20" y2="44" stroke="#4a8a4a" stroke-width="2" stroke-linecap="round"/>
-      <path d="M20,36 Q28,32 25,26" stroke="#4a8a4a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-      <ellipse cx="20" cy="8" rx="5" ry="9" fill="#f5d26c" opacity="0.88"/>
-      <ellipse cx="20" cy="8" rx="5" ry="9" fill="#e0b84c" opacity="0.82" transform="rotate(60,20,20)"/>
-      <ellipse cx="20" cy="8" rx="5" ry="9" fill="#f5d26c" opacity="0.88" transform="rotate(120,20,20)"/>
-      <ellipse cx="20" cy="8" rx="5" ry="9" fill="#e0b84c" opacity="0.82" transform="rotate(180,20,20)"/>
-      <ellipse cx="20" cy="8" rx="5" ry="9" fill="#f5d26c" opacity="0.88" transform="rotate(240,20,20)"/>
-      <ellipse cx="20" cy="8" rx="5" ry="9" fill="#e0b84c" opacity="0.82" transform="rotate(300,20,20)"/>
-      <circle cx="20" cy="20" r="7" fill="#fff"/>
-      <circle cx="20" cy="20" r="4" fill="#e8a0b0"/>
+    <svg class="section-icon" viewBox="0 0 36 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="18" y1="0" x2="18" y2="7" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+      <rect x="9" y="7" width="18" height="5" rx="2" fill="#c9a84c"/>
+      <path d="M10,12 Q7.5,20 7.5,29 Q7.5,38 10,43 L26,43 Q28.5,38 28.5,29 Q28.5,20 26,12 Z" fill="#f8e87c" opacity="0.9"/>
+      <path d="M10,12 Q7.5,20 7.5,29 Q7.5,38 10,43 L26,43 Q28.5,38 28.5,29 Q28.5,20 26,12 Z" stroke="#c9a84c" stroke-width="0.9" fill="none"/>
+      <line x1="18" y1="12" x2="18" y2="43" stroke="#c9a84c" stroke-width="0.7" opacity="0.4"/>
+      <ellipse cx="18" cy="28" rx="6.5" ry="9" fill="white" opacity="0.3"/>
+      <path d="M11.5,43 Q14.5,49 18,51 Q21.5,49 24.5,43 Z" fill="#c9a84c" opacity="0.78"/>
+      <polygon points="4,6 5.2,9.5 9,9.5 6,11.5 7.2,15 4,13 0.8,15 2,11.5 -1,9.5 2.8,9.5" fill="#f0d98a" opacity="0.5" transform="scale(0.7) translate(3,4)"/>
     </svg>
-    <h2 class="section-title">Per chi si ferma</h2>
-    <p class="section-subtitle">Il riposo dopo la festa</p>
+    <h2 class="section-title">Un pensiero per noi</h2>
+    <p class="section-subtitle">Non è obbligatorio, ma ci scalda il cuore 💛</p>
     <div class="section-line">
       <svg viewBox="0 0 140 26" xmlns="http://www.w3.org/2000/svg" width="140" height="26" aria-hidden="true">
         <line x1="0" y1="13" x2="54" y2="13" stroke="#c9a84c" stroke-width="0.8" stroke-opacity="0.5"/>
@@ -748,133 +859,127 @@ footer p{
         <line x1="78.2" y1="21.2" x2="74" y2="17" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/>
       </svg>
     </div>
-
     <p class="section-body">
-      Per chi desidera fermarsi dopo la festa, è possibile alloggiare a pochi passi dal castello 🏰
+      Il regalo più grande sarà la vostra presenza 💛 <br>
+      Ma se desiderate contribuire alla nostra nuova vita insieme, abbiamo racchiuso i nostri desideri in una lista nozze online: 
+      potrete così contribuire al nostro viaggio di nozze
+      — la nostra prima avventura da mogli — o ad altri piccoli progetti per la nostra vita insieme. ✈️🌍🏡💛
     </p>
-
-    <div class="hotel-inner">
-      <p class="hotel-name">Gambrinus Locanda (1 min a piedi)</p>
-      <p class="hotel-address">Via Capitello, 18 — San Polo di Piave</p>
-      <p class="hotel-note">Abbiamo riservato le camere esclusivamente per i nostri ospiti. Se vi volete fermare contattateci 😊</p>
-      <a class="btn btn-dark" href="https://www.gambrinus.it/locanda/" target="_blank" style="margin-top:0.4rem">Visita il sito</a>
-    </div>
-
-    <div class="hotel-inner">
-      <p class="hotel-name">Villa Marcello Giustinian (10 min di macchina)</p>
-      <p class="hotel-address">Via Roma, 4 — San Polo di Piave</p>
-      <a class="btn btn-dark" href="https://www.villamarcellogiustinian.it/" target="_blank" style="margin-top:0.4rem">Visita il sito</a>
-    </div>
-  </div>
+    <div class="gift-grid">
+<div class="gift-card"><div style="font-size:2rem">✈️</div><h4>Viaggio di nozze</h4><button class="btn btn-gold" onclick="openGiftModal(0)">Scopri</button></div>
+<div class="gift-card"><div style="font-size:2rem">🏰</div><h4>Disneyland Paris</h4><button class="btn btn-gold" onclick="openGiftModal(1)">Scopri</button></div>
+<div class="gift-card"><div style="font-size:2rem">🖼️</div><h4>Cornice digitale</h4><button class="btn btn-gold" onclick="openGiftModal(2)">Scopri</button></div>
+<div class="gift-card"><div style="font-size:2rem">🎨</div><h4>Quadro personalizzato</h4><button class="btn btn-gold" onclick="openGiftModal(3)">Scopri</button></div>
 </div>
-
-<div class="section reveal">
-  <div class="glass">
-    <svg class="section-icon" viewBox="0 0 32 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <line x1="16" y1="0" x2="16" y2="7" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
-      <rect x="7" y="7" width="18" height="5" rx="2" fill="#c9a84c"/>
-      <path d="M8,12 Q6,20 6,29 Q6,38 8,43 L24,43 Q26,38 26,29 Q26,20 24,12 Z" fill="#f8e87c" opacity="0.9"/>
-      <path d="M8,12 Q6,20 6,29 Q6,38 8,43 L24,43 Q26,38 26,29 Q26,20 24,12 Z" stroke="#c9a84c" stroke-width="0.9" fill="none"/>
-      <ellipse cx="16" cy="28" rx="6" ry="9" fill="white" opacity="0.3"/>
-      <path d="M9.5,43 Q12.5,49 16,51 Q19.5,49 22.5,43 Z" fill="#c9a84c" opacity="0.78"/>
-    </svg>
-    <h2 class="section-title">RSVP</h2>
-    <p class="section-subtitle">Conferma la tua presenza</p>
-    <div class="section-line">
-      <svg viewBox="0 0 140 26" xmlns="http://www.w3.org/2000/svg" width="140" height="26" aria-hidden="true">
-        <line x1="0" y1="13" x2="54" y2="13" stroke="#c9a84c" stroke-width="0.8" stroke-opacity="0.5"/>
-        <line x1="86" y1="13" x2="140" y2="13" stroke="#c9a84c" stroke-width="0.8" stroke-opacity="0.5"/>
-        <circle cx="70" cy="13" r="5.5" fill="#c9a84c"/>
-        <line x1="70" y1="1" x2="70" y2="7" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="70" y1="19" x2="70" y2="25" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="58" y1="13" x2="64" y2="13" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="76" y1="13" x2="82" y2="13" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="61.8" y1="4.8" x2="66" y2="9" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/>
-        <line x1="78.2" y1="4.8" x2="74" y2="9" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/>
-        <line x1="61.8" y1="21.2" x2="66" y2="17" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/>
-        <line x1="78.2" y1="21.2" x2="74" y2="17" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/>
-      </svg>
-    </div>
-
-    <p class="section-body">
-      Saremo felicissime di averti con noi in questa giornata speciale.
-      Per aiutarci con l'organizzazione, ti chiediamo gentilmente di confermare la tua presenza. 🤍
-    </p>
-
-    <div class="btn-row">
-      <a class="btn btn-primary" href="https://forms.gle/qS7Hnt1uCqKz992n7" target="_blank">✉️ Conferma qui</a>
-    </div>
-
-    <!-- Sezione Regali Sostituita -->
-    <div class="regalo-inner">
-      <p>🏮 Dai colore ai nostri sogni 🌸</p>
-      <!-- INSERISCI QUI IL TUO CODICE DEL BOX "LA NOSTRA LISTA NOZZE" -->
-    </div>
-
+<div class="regalo-inner">
+<p>🏮 Dai colore ai nostri sogni 🌸</p>
+<a class="btn btn-gold" href="https://given2.us/E2" target="_blank">🎁 Visualizza la nostra Lista Nozze</a>
+</div>
   </div>
 </div>
 
 <footer>
-  <h2 class="footer-names">Erika &amp; Elisabetta</h2>
-  <p>4 Settembre 2026</p>
+  <div class="footer-names">Erika &amp; Elisabetta</div>
+  <p>4 Settembre 2026 · San Polo di Piave</p>
+  <p style="margin-top:0.4rem">Non vediamo l'ora di condividere questa magia con voi 🏰✨</p>
   <div class="footer-lanterns">
-    <span>✨</span>
-    <span>✨</span>
-    <span>✨</span>
+    <svg width="18" height="26" viewBox="0 0 36 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="18" y1="0" x2="18" y2="7" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+      <rect x="9" y="7" width="18" height="5" rx="2" fill="#c9a84c"/>
+      <path d="M10,12 Q7.5,20 7.5,29 Q7.5,38 10,43 L26,43 Q28.5,38 28.5,29 Q28.5,20 26,12 Z" fill="#f8e87c" opacity="0.7"/>
+      <path d="M11.5,43 Q14.5,49 18,51 Q21.5,49 24.5,43 Z" fill="#c9a84c" opacity="0.6"/>
+    </svg>
+    <span>♡</span>
+    <svg width="18" height="26" viewBox="0 0 36 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="18" y1="0" x2="18" y2="7" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+      <rect x="9" y="7" width="18" height="5" rx="2" fill="#c9a84c"/>
+      <path d="M10,12 Q7.5,20 7.5,29 Q7.5,38 10,43 L26,43 Q28.5,38 28.5,29 Q28.5,20 26,12 Z" fill="#f8e87c" opacity="0.7"/>
+      <path d="M11.5,43 Q14.5,49 18,51 Q21.5,49 24.5,43 Z" fill="#c9a84c" opacity="0.6"/>
+    </svg>
   </div>
 </footer>
+<div id="giftModal" style="display:none;position:fixed;inset:0;background:rgba(5,2,10,.88);z-index:9999;align-items:center;justify-content:center;padding:1rem">
+<div style="background:rgba(42,8,72,.97);border:1px solid var(--gold);border-radius:22px;padding:2rem;max-width:380px;width:100%;text-align:center">
+<div id="gModalTag"></div><h3 id="gModalTitle"></h3><p id="gModalDesc"></p>
+<p style="margin-top:1rem">IBAN: IT32 U062 3002 0410 0001 5606 003</p>
+<p id="gModalCausale"></p>
+<button id="gModalCopyBtn" class="btn btn-gold" onclick="copyCausale()">📋 Copia la causale</button>
+<button class="btn btn-dark" onclick="closeGiftModal()">Chiudi</button>
+</div></div>
 
 </div>
-
 <script>
-  function createLanterns(){
-    const bg = document.createElement('div');
-    bg.className = 'lanterns-bg';
-    document.body.appendChild(bg);
-    for(let i=0; i<12; i++){
-      let l = document.createElement('div');
-      l.className = 'fl-lantern';
-      let w = 20 + Math.random()*25;
-      let dur = 10 + Math.random()*8;
-      let delay = Math.random()*6;
-      let left = Math.random()*100;
-      
-      l.style.left = left + '%';
-      l.style.setProperty('--dur', dur + 's');
-      l.style.setProperty('--delay', delay + 's');
-      l.style.width = w + 'px';
-      l.style.height = (w*1.4) + 'px';
-      
-      l.innerHTML = `
-        <svg viewBox="0 0 32 44" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" aria-hidden="true">
-          <line x1="16" y1="0" x2="16" y2="7" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
-          <rect x="7" y="7" width="18" height="5" rx="2" fill="#c9a84c"/>
-          <path d="M8,12 Q6,20 6,29 Q6,38 8,43 L24,43 Q26,38 26,29 Q26,20 24,12 Z" fill="#f8e87c" opacity="0.8"/>
-          <path d="M8,12 Q6,20 6,29 Q6,38 8,43 L24,43 Q26,38 26,29 Q26,20 24,12 Z" stroke="#c9a84c" stroke-width="0.9" fill="none"/>
-          <ellipse cx="16" cy="28" rx="6" ry="9" fill="white" opacity="0.3"/>
-          <path d="M9.5,43 Q12.5,49 16,51 Q19.5,49 22.5,43 Z" fill="#c9a84c" opacity="0.75"/>
-        </svg>
-      `;
-      bg.appendChild(l);
-    }
-  }
+(function(){
+  const img = document.querySelector('.bg-fixed img');
+  if(img){ window.addEventListener('resize', () => img.style.transform='translateZ(0)'); }
+})();
 
-  function handleReveal(){
-    const reveals = document.querySelectorAll('.reveal');
-    const wh = window.innerHeight;
-    reveals.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if(rect.top < wh - 60){
-        el.classList.add('visible');
-      }
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    createLanterns();
-    handleReveal();
+// FLOATING LANTERNS
+(function(){
+  const hero = document.querySelector('.hero');
+  const lanterns = [
+    {left:'7%',dur:'9s',delay:'0s',w:18,h:26},
+    {left:'19%',dur:'7.5s',delay:'1.8s',w:14,h:20},
+    {left:'32%',dur:'11s',delay:'0.6s',w:20,h:28},
+    {left:'47%',dur:'8.5s',delay:'3.2s',w:16,h:22},
+    {left:'60%',dur:'10s',delay:'1.1s',w:19,h:27},
+    {left:'74%',dur:'7s',delay:'2.4s',w:15,h:21},
+    {left:'86%',dur:'9.5s',delay:'4.2s',w:18,h:25},
+    {left:'93%',dur:'8s',delay:'5.8s',w:13,h:18},
+    {left:'13%',dur:'12s',delay:'6.5s',w:16,h:23},
+    {left:'54%',dur:'8.2s',delay:'7s',w:14,h:20},
+  ];
+  const container = document.createElement('div');
+  container.className = 'lanterns-bg';
+  container.setAttribute('aria-hidden','true');
+  lanterns.forEach(d => {
+    const el = document.createElement('div');
+    el.className = 'fl-lantern';
+    el.style.cssText = `left:${d.left};--dur:${d.dur};--delay:${d.delay}`;
+    const s = d.w / 36;
+    el.innerHTML = `<svg width="${d.w}" height="${d.h}" viewBox="0 0 36 52" xmlns="http://www.w3.org/2000/svg">
+      <line x1="18" y1="0" x2="18" y2="7" stroke="#c9a84c" stroke-width="${1.5/s}" stroke-linecap="round"/>
+      <rect x="9" y="7" width="18" height="5" rx="2" fill="#c9a84c"/>
+      <path d="M10,12 Q7.5,20 7.5,29 Q7.5,38 10,43 L26,43 Q28.5,38 28.5,29 Q28.5,20 26,12 Z" fill="#f8e87c" opacity="0.88"/>
+      <line x1="18" y1="12" x2="18" y2="43" stroke="#c9a84c" stroke-width="${0.7/s}" opacity="0.35"/>
+      <ellipse cx="18" cy="28" rx="6.5" ry="9" fill="white" opacity="0.28"/>
+      <path d="M11.5,43 Q14.5,49 18,51 Q21.5,49 24.5,43 Z" fill="#c9a84c" opacity="0.75"/>
+    </svg>`;
+    container.appendChild(el);
   });
-  window.addEventListener('scroll', handleReveal);
+  hero.insertBefore(container, hero.firstChild);
+})();
+
+// COUNTDOWN
+function updateCD(){
+  const diff = new Date('2026-09-04T16:00:00') - new Date();
+  if(diff <= 0){
+    document.getElementById('countdown').innerHTML =
+      '<p style="font-family:\'Cinzel\',serif;color:var(--gold-light);font-size:1.1rem">🎉 È il grande giorno! 🎉</p>';
+    return;
+  }
+  document.getElementById('cd-days').textContent  = String(Math.floor(diff/86400000)).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+  document.getElementById('cd-min').textContent   = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+}
+updateCD();
+setInterval(updateCD, 30000);
+
+// REVEAL ON SCROLL
+const obs = new IntersectionObserver(es => {
+  es.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+const giftData=[
+{tag:"✈️ Viaggio di nozze",title:"Contributo al viaggio di nozze",desc:"La nostra prima avventura da mogli.",causale:"Regalo Nozze Erika e Elisabetta - Viaggio di Nozze"},
+{tag:"🏰 Esperienza Disney",title:"Disneyland Paris",desc:"Il nostro posto del cuore.",causale:"Regalo Nozze Erika e Elisabetta - Disneyland Paris"},
+{tag:"🖼️ Per la nostra casa",title:"Cornice digitale",desc:"Per custodire i nostri ricordi.",causale:"Regalo Nozze Erika e Elisabetta - Cornice Digitale"},
+{tag:"🎨 Arte personalizzata",title:"Quadro personalizzato",desc:"Un'opera unica.",causale:"Regalo Nozze Erika e Elisabetta - Quadro Personalizzato"}];
+function openGiftModal(i){let d=giftData[i];document.getElementById('gModalTag').innerText=d.tag;document.getElementById('gModalTitle').innerText=d.title;document.getElementById('gModalDesc').innerText=d.desc;document.getElementById('gModalCausale').innerText=d.causale;document.getElementById('giftModal').style.display='flex';}
+function closeGiftModal(){document.getElementById('giftModal').style.display='none';}
+function copyCausale(){navigator.clipboard.writeText(document.getElementById('gModalCausale').innerText);}
+
 </script>
 </body>
 </html>
